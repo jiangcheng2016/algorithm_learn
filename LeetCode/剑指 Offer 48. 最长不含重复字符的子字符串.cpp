@@ -38,3 +38,28 @@ public:
         return res;
     }
 };
+
+//java 版本
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int res = 0;
+        Map<Character,Integer> heap = new HashMap<>();
+        int count = 0;
+
+        for (int i = 0, j = 0; i < s.length(); i ++)
+        {
+            if(heap.get(s.charAt(i)) == null)
+                heap.put(s.charAt(i),1);
+            else
+                heap.put(s.charAt(i),heap.get(s.charAt(i)) + 1);
+            while(heap.get(s.charAt(i)) > 1)
+            {
+                heap.put(s.charAt(j),heap.get(s.charAt(j)) - 1);
+                j ++;
+            }
+            res = Math.max(res, i - j + 1);
+        }
+        return res;
+    }
+}

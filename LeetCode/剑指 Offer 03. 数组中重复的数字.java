@@ -21,6 +21,10 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 
+
+/**
+ * 遍历数据找出第一个重复的元素 ，效率较低
+ */
 class Solution {
     public int findRepeatNumber(int[] nums) {
         HashSet<Integer> set = new HashSet<Integer>();
@@ -34,5 +38,26 @@ class Solution {
             }
         }
         return res;
+    }
+}
+
+/**
+ * 原地置换，一个萝卜一个坑
+ */
+class Solution {
+    public int findRepeatNumber(int[] nums) {
+        int res;
+        for (int i = 0; i < nums.length; i ++)
+        {
+            while(i != nums[i])
+            {
+                if(nums[i] == nums[nums[i]])
+                    return nums[i];
+                res = nums[i];
+                nums[i] = nums[res];
+                nums[res] = res;
+            }
+        }
+        return -1;
     }
 }

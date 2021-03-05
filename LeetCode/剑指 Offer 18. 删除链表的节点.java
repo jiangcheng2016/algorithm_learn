@@ -28,7 +28,6 @@
 链接：https://leetcode-cn.com/problems/shan-chu-lian-biao-de-jie-dian-lcof
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -39,7 +38,7 @@
  */
 class Solution {
     public ListNode deleteNode(ListNode head, int val) {
-        if(head == null) return head;
+        if(head.val == val) return head.next;
         ListNode pre = head, cur = head.next;
 
         while(cur != null && cur.val != val)
@@ -48,6 +47,6 @@ class Solution {
             cur = cur.next;
         }
         if(cur != null) pre.next = cur.next;
-        return pre;
+        return head;
     }
 }
